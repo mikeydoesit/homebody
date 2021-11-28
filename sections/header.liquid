@@ -1,48 +1,124 @@
-<header class="header header1">
-  <div class="header1__header-main">
-      <div class="header1__menu-toggle-wrapper"><input type="checkbox" class="menu-toggle"><span></span><span></span><span></span>
-          <ul class="header1__mobile-navigation">
-              <li class="header1__expanding-link"><a href="/link">LINK <i class="fas fa-chevron-down"></i>
-                      <ul class="header1__sub-links">
-                          <li><a href="#">Link</a></li>
-                          <li><a href="#">Link</a></li>
-                          <li><a href="#">Link</a></li>
-                          <li><a href="#">Link</a></li>
-                      </ul>
-                  </a></li>
-              <li><a href="/link">LINK</a></li>
-              <li><a href="/link">LINK</a></li>
-          </ul>
-      </div>
-      <div class="logo-wrapper"><a href="/link">LOGO</a></div>
-      <div class="search-wrapper"><input type="text" placeholder="search"><a href="/link"><i class="fas fa-search"></i></a></div>
-      <div class="user-wrapper">
-          <div class="search"><input type="checkbox" class="checkbox"><input type="text" class="search-box">
-              <div class="search-btn"><i class="fas fa-search"></i></div>
-          </div><a class="account-btn" href="/account">ACCOUNT</a><a class="cart-btn" href="/cart"><i class="fas fa-shopping-cart"></i></a>
-      </div>
-  </div>
-  <ul class="header1__navigation">
-      <li class="header1__expanding-link"><a href="/link">LINK <i class="fas fa-chevron-down"></i>
-              <ul class="header1__sub-links">
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-              </ul>
-          </a></li>
-      <li><a href="/link">LINK</a></li>
-      <li><a href="/link">LINK</a></li>
-      <li><a href="/link">LINK</a></li>
-  </ul>
-</header>
-
 {% case section.settings.header_type%}
   {% when 'header1'%}  
+  <header class="header header1">
+    <div class="header1__header-main">
+      {%- if section.settings.menu != blank -%}
+        <div class="header1__menu-toggle-wrapper"><input type="checkbox" class="menu-toggle"><span></span><span></span><span></span>
+            <ul class="header1__mobile-navigation">
+              {%- for link in section.settings.menu.links -%}
+              {%- if link.links == blank -%}
+                <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+                {%-else-%}
+                <li class="header1__expanding-link">
+                  <a href="{{ link.url }}">{{ link.title | escape }} 
+                    <i class="fas fa-chevron-down"></i>
+                    <ul class="header1__sub-links">
+                      {%- for childlink in link.links -%}
+                        <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                      {%-endfor-%}
+                    </ul>
+                  </a>
+                </li>
+                {%-endif-%}
+                {%-endfor-%}
+            </ul>
+        </div>
+      {%-endif-%}
 
+        {% comment %} Logo {% endcomment %}
+        <div class="logo-wrapper">
+          <a href="{{ routes.root_url }}">
+            {%- if section.settings.logo != blank -%}
+            {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+            <img srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+              src="{{ section.settings.logo | img_url: image_size }}"
+              loading="lazy"
+              class="header__heading-logo"
+              width="{{ section.settings.logo.width }}"
+              height="{{ section.settings.logo.height }}"
+              alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+            >
+          {%- else -%}
+            {{ shop.name }}
+          {%- endif -%}</a>
+        </div>
+        {% comment %} Right Column {% endcomment %}
+        <div class="search-wrapper">
+          <input type="text" placeholder="search"><a href="/link"><i class="fas fa-search"></i></a>
+        </div>
+        <div class="user-wrapper">
+            <div class="search">
+              <input type="checkbox" class="checkbox">
+              <input type="text" class="search-box">
+              <div class="search-btn"><i class="fas fa-search"></i></div>
+            </div>
+            {%- if shop.customer_accounts_enabled -%}
+              <a class="account-btn" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">ACCOUNT</a>
+            {%- endif -%}
+            
+            <a class="cart-btn" href="{{ routes.cart_url }}"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </div>
+    {%- if section.settings.menu != blank -%}
+        <ul class="header1__navigation">
+          {%- for link in section.settings.menu.links -%}
+          {%- if link.links == blank -%}
+            <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            {%-else-%}
+            <li class="header1__expanding-link">
+              <a href="{{ link.url }}">{{ link.title | escape }} <i class="fas fa-chevron-down"></i>
+                  <ul class="header1__sub-links">
+                    {%- for childlink in link.links -%}
+                      <li>
+                        <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                      </li>
+                      {%-endfor-%}
+                  </ul>
+              </a>
+            </li>
+            {%-endif-%}
+            {%-endfor-%}
+        </ul>
+    {%-endif-%}
+  </header>
+
+  {% comment %} HEADER 2 STARTS {% endcomment %}
   {% when 'header2'%}
+    <header class="header header2">
+      <div class="header2__header-main">
+          <div class="navigation-wrapper"><a href="/link" class="header1__expanding-link">LINK <i class="fas fa-chevron-down"></i>
+                  <ul class="header1__sub-links">
+                      <li><a href="#">Link</a></li>
+                      <li><a href="#">Link</a></li>
+                      <li><a href="#">Link</a></li>
+                      <li><a href="#">Link</a></li>
+                  </ul>
+              </a><a href="/link">LINK</a><a href="/link">LINK</a></div>
+          <div class="logo-wrapper"><a href="/link">LOGO</a></div>
+          <div class="user-wrapper"><a href="/link"><i class="fas fa-search"></i></a><a href="/account"><i class="fas fa-user"></i></a><a href="/cart"><i class="fas fa-shopping-cart"></i></a></div>
+      </div>
+    </header>
 
-  {% when 'header3'%}  
+    {% comment %} HEADER 3 STARTS {% endcomment %}
+  {% when 'header3'%} 
+  <header class="header header3">
+    <div class="header3__header-main">
+        <div class="nav-logo">
+            <div class="logo-wrapper"><a href="/link">LOGO</a></div>
+            <div class="navigation-wrapper"><a href="/link" class="header3__expanding-link">LINK <i class="fas fa-chevron-down"></i>
+                    <ul class="header3__sub-links">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </a><a href="/link">LINK</a><a href="/link">LINK</a></div>
+        </div>
+        <div class="user-wrapper">
+            <div class="search-wrapper"><input type="text" placeholder="search"><a href="/link"><i class="fas fa-search"></i></a></div><a href="/account">ACCOUNT</a><a href="/cart">CART (0)</a>
+        </div>
+    </div>
+  </header>
 
 {% endcase%}
 
@@ -69,34 +145,6 @@
         }
       ],
       "default": "header1"
-    },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.header.settings.color_scheme.options__1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.header.settings.color_scheme.options__2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.header.settings.color_scheme.options__3.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.header.settings.color_scheme.options__4.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.header.settings.color_scheme.options__5.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.header.settings.color_scheme.label"
     },
     {
       "type": "image_picker",
