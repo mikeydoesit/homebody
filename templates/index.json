@@ -67,14 +67,16 @@
     "1638386639e0caaf9b": {
       "type": "hero-two",
       "settings": {
+        "left_image": "shopify:\/\/shop_images\/framesbg.png",
+        "right_image": "shopify:\/\/shop_images\/candlesbg.png",
         "background-color": "#000000",
-        "opacity": 0.5,
+        "opacity": 0.3,
         "left_button_text": "Frames",
         "right_button_text": "Candles",
-        "left_button_link": "",
-        "right_button_link": "",
-        "left-button-alignment": "center",
-        "right-button-alignment": "center"
+        "left_button_link": "shopify:\/\/collections",
+        "right_button_link": "shopify:\/\/collections\/candles",
+        "left-button-alignment": "bottom-right",
+        "right-button-alignment": "bottom-left"
       }
     },
     "1638386643b499e3af": {
