@@ -1,5 +1,91 @@
 {
-  "current": "Default",
+  "current": {
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_accent_1": "#121212",
+    "colors_accent_2": "#334FB4",
+    "colors_text": "#121212",
+    "colors_outline_button_labels": "#121212",
+    "colors_background_1": "#FFFFFF",
+    "colors_background_2": "#F3F3F3",
+    "type_header_font": "assistant_n4",
+    "type_body_font": "assistant_n4",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "Welcome to our store",
+              "background_color": "#d3c5be",
+              "announcement_text_color": "#fcfcfc",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "header_type": "header1",
+          "logo_width": 100,
+          "logo_position": "middle-left",
+          "menu": "main-menu",
+          "show_line_separator": true,
+          "enable_sticky_header": true
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "About",
+              "menu": "footer"
+            }
+          },
+          "61ddcac1-0b5d-4d47-a5aa-d5a9f6c661fe": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Help",
+              "menu": "main-menu"
+            }
+          },
+          "32037de2-94c0-4acb-b328-18dcb639f20e": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Quick links",
+              "menu": "main-menu-2"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "61ddcac1-0b5d-4d47-a5aa-d5a9f6c661fe",
+          "32037de2-94c0-4acb-b328-18dcb639f20e"
+        ],
+        "settings": {
+          "footer_background": "#d3c5be",
+          "background_opacity": 1,
+          "show_social_header": true,
+          "social_column_header": "Follow Us",
+          "newsletter_enable": true,
+          "newsletter_heading": "Don't miss out! Join us to get special offers.",
+          "input_field_placeholder": "jane@gmail.com",
+          "show_social": true
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
     "Default": {
       "colors_solid_button_labels": "#FFFFFF",
@@ -24,7 +110,9 @@
           },
           "block_order": [
             "announcement-bar-0"
-          ]
+          ],
+          "settings": {
+          }
         }
       }
     },
@@ -41,21 +129,25 @@
       "sections": {
         "footer": {
           "type": "footer",
-          "settings": {
-            "color_scheme": "accent-1"
-          },
           "blocks": {
             "menu": {
-              "type": "link_list"
+              "type": "link_list",
+              "settings": {
+              }
             },
             "text": {
-              "type": "text"
+              "type": "text",
+              "settings": {
+              }
             }
           },
           "block_order": [
             "menu",
             "text"
-          ]
+          ],
+          "settings": {
+            "color_scheme": "accent-1"
+          }
         }
       }
     }

@@ -1,106 +1,155 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "settings": {
-        "desktop_text_box_position": "flex-end"
-      },
+    "163838649020d89058": {
+      "type": "hero-one",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "16383864902b5d5b30-0": {
+          "type": "title",
           "settings": {
-            "heading": "Talk about your brand"
+            "title": "Up To 40% Off"
           }
         },
-        "button": {
-          "type": "buttons",
+        "16383864902b5d5b30-1": {
+          "type": "subtitle",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_label_2": ""
+            "subtitle": "Grab a great deal on stylish home decor"
+          }
+        },
+        "16383864902b5d5b30-2": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Now",
+            "button_link": ""
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
-      ]
-    },
-    "rich_text": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading"
-        },
-        "text": {
-          "type": "text"
-        },
-        "button": {
-          "type": "button"
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ]
-    },
-    "featured_products": {
-      "type": "featured-collection",
+        "16383864902b5d5b30-0",
+        "16383864902b5d5b30-1",
+        "16383864902b5d5b30-2"
+      ],
       "settings": {
-        "title": "Featured products",
-        "collection": "all",
-        "image_ratio": "square"
+        "image": "shopify:\/\/shop_images\/homedecor.png",
+        "background-color": "#000000",
+        "opacity": 0.3,
+        "cta-alignment": "center"
       }
     },
-    "collage": {
-      "type": "collage",
+    "163838659697b75320": {
+      "type": "collection-group",
+      "settings": {
+        "collection": "candles",
+        "background-color": "#ffffff",
+        "opacity": 0,
+        "image_padding": 14,
+        "show_product_name": true,
+        "product_name_color": "#222222",
+        "product_name_font_size": 18,
+        "product_name_font_weight": 600,
+        "product_name_alignment": "right",
+        "show_subtitle": true,
+        "product_subtitle_font": "poppins_n4",
+        "product_subtitle_font_size": 14,
+        "product_subtitle_font_weight": 400,
+        "product_subtitle_alignment": "center",
+        "show_price": true,
+        "product_price_font": "poppins_n6",
+        "product_price_font_size": 18,
+        "product_price_font_weight": 600,
+        "product_price_alignment": "center",
+        "xxl": "col-xxl-4",
+        "xl": "col-xl-4",
+        "lg": "col-lg-4",
+        "md": "col-md-4",
+        "sm": "col-sm-12"
+      }
+    },
+    "1638386639e0caaf9b": {
+      "type": "hero-two",
+      "settings": {
+        "left_image": "shopify:\/\/shop_images\/framesbg.png",
+        "right_image": "shopify:\/\/shop_images\/candlesbg.png",
+        "background-color": "#000000",
+        "opacity": 0.3,
+        "left_button_text": "Frames",
+        "right_button_text": "Candles",
+        "left_button_link": "shopify:\/\/collections",
+        "right_button_link": "shopify:\/\/collections\/candles",
+        "left-button-alignment": "bottom-right",
+        "right-button-alignment": "bottom-left"
+      }
+    },
+    "1638386643b499e3af": {
+      "type": "collection-group",
+      "settings": {
+        "collection": "home-decor",
+        "background-color": "#ffffff",
+        "opacity": 0,
+        "image_padding": 14,
+        "show_product_name": true,
+        "product_name_color": "#222222",
+        "product_name_font_size": 20,
+        "product_name_font_weight": 600,
+        "product_name_alignment": "center",
+        "show_subtitle": true,
+        "product_subtitle_font": "poppins_n4",
+        "product_subtitle_font_size": 14,
+        "product_subtitle_font_weight": 400,
+        "product_subtitle_alignment": "center",
+        "show_price": true,
+        "product_price_font": "poppins_n6",
+        "product_price_font_size": 18,
+        "product_price_font_weight": 600,
+        "product_price_alignment": "center",
+        "xxl": "col-xxl-4",
+        "xl": "col-xl-4",
+        "lg": "col-lg-4",
+        "md": "col-md-4",
+        "sm": "col-sm-12"
+      }
+    },
+    "16383866554ca409d0": {
+      "type": "hero-one",
       "blocks": {
-        "video": {
-          "type": "video"
+        "16383866554ebd1b70-0": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "title": "Title"
+          }
         },
-        "product": {
-          "type": "product"
+        "16383866554ebd1b70-1": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "Elegant, handmade christmas decor on sale now!"
+          }
         },
-        "collection": {
-          "type": "collection"
+        "16383866554ebd1b70-2": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Now",
+            "button_link": ""
+          }
         }
       },
       "block_order": [
-        "video",
-        "product",
-        "collection"
-      ]
-    },
-    "video": {
-      "type": "video"
-    },
-    "multi_column": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column"
-        },
-        "column2": {
-          "type": "column"
-        },
-        "column3": {
-          "type": "column"
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ]
+        "16383866554ebd1b70-0",
+        "16383866554ebd1b70-1",
+        "16383866554ebd1b70-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/homedecor3.jpg",
+        "background-color": "#000000",
+        "opacity": 0.3,
+        "cta-alignment": "center"
+      }
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
-    "featured_products",
-    "collage",
-    "video",
-    "multi_column"
+    "163838649020d89058",
+    "163838659697b75320",
+    "1638386639e0caaf9b",
+    "1638386643b499e3af",
+    "16383866554ca409d0"
   ]
 }
