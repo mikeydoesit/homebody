@@ -49,10 +49,26 @@
               "heading": "About",
               "menu": "footer"
             }
+          },
+          "61ddcac1-0b5d-4d47-a5aa-d5a9f6c661fe": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Help",
+              "menu": "main-menu"
+            }
+          },
+          "32037de2-94c0-4acb-b328-18dcb639f20e": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Quick links",
+              "menu": "main-menu-2"
+            }
           }
         },
         "block_order": [
-          "footer-0"
+          "footer-0",
+          "61ddcac1-0b5d-4d47-a5aa-d5a9f6c661fe",
+          "32037de2-94c0-4acb-b328-18dcb639f20e"
         ],
         "settings": {
           "footer_background": "#d3c5be",
