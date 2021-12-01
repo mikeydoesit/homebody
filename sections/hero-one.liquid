@@ -1,0 +1,153 @@
+{{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+
+<div class="hero hero1 hero1__align-{{ section.settings.cta-alignment }}">
+    {%- if section.settings.image != blank -%}
+        <img
+          srcset="{%- if section.settings.image.width >= 165 -%}{{ section.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+            {%- if section.settings.image.width >= 360 -%}{{ section.settings.image | img_url: '360x' }} 360w,{%- endif -%}
+            {%- if section.settings.image.width >= 535 -%}{{ section.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+            {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+            {%- if section.settings.image.width >= 1070 -%}{{ section.settings.image | img_url: '1070x' }} 1070w,{%- endif -%}
+            {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+            {{ section.settings.image | img_url: 'master' }} {{ section.settings.image.width }}w"
+          src="{{ section.settings.image | img_url: '1500x' }}"
+          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 1080px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+          alt="{{ section.settings.image.alt | escape }}"
+          loading="lazy"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+          class="hero1__bg" 
+        >
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    <div class="hero1__content-container" style="background-color: {{ section.settings.background-color | color_modify: 'alpha', section.settings.opacity }}; ">
+        <div class="hero1__info">
+        {%- for block in section.blocks -%}
+            {% case block.type %}
+              {%- when 'title' -%}
+                <h1 class="hero1__title" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}</h1>
+              {%- when 'subtitle' -%}
+                <p class="hero1__paragraph" {{ block.shopify_attributes }}>{{ block.settings.subtitle }}</p>
+              {%- when 'button' -%}
+                {%- if block.settings.button_text != blank -%}
+                  <a{% if block.settings.button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.button_link }}"{% endif %} class="hero1__button" {{ block.shopify_attributes }}>
+                    {{ block.settings.button_text | escape }}
+                  </a>
+                {%- endif -%}
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero One",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+        "type": "color",
+        "id": "background-color",
+        "label": "Background Overlay Color",
+        "default": "#000000"
+    },
+    {
+        "type": "range",
+        "id": "opacity",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "label": "Opacity",
+        "default": 0.5
+    },
+    {
+      "type": "select",
+      "id": "cta-alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Call To Action Alignment"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Enter Title",
+            "default": "Title"
+        }
+      ]
+    },
+    {
+      "type": "subtitle",
+      "name": "Subtitle",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "default": "Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.",
+          "label": "Enter Subtitle"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.image-with-text.blocks.button.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "default": "Shop Now",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero One",
+      "blocks": [
+        {
+          "type": "title"
+        },
+        {
+          "type": "subtitle"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

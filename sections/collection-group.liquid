@@ -1,0 +1,399 @@
+<div class="collection1">
+    <div class="container">
+        <div class="row">
+            {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+            <div class="{{ section.settings.xxl }} {{ section.settings.xl }} {{ section.settings.lg }} {{ section.settings.md }} {{ section.settings.sm }}">
+                <div class="collection1__collection-item">
+                    <div class="collection1__product-image" style="background-color: {{ section.settings.background-color | color_modify: 'alpha', section.settings.opacity }};">
+                        <span class="collection1__heart"><i class="far fa-heart fa-lg"></i></span>
+                        <a href="{{ product.url }}" class="collection1__product-link" style="padding: {{ section.settings.image_padding }}px">
+                        {%- if product.images[0] != blank -%}
+                            <img
+                                srcset="{%- if product.images[0].width >= 165 -%}{{ product.images[0] | img_url: '165x' }} 165w,{%- endif -%}
+                                    {%- if product.images[0].width >= 360 -%}{{ product.images[0] | img_url: '360x' }} 360w,{%- endif -%}
+                                    {%- if product.images[0].width >= 535 -%}{{ product.images[0] | img_url: '535x' }} 535w,{%- endif -%}
+                                    {%- if product.images[0].width >= 750 -%}{{ product.images[0] | img_url: '750x' }} 750w,{%- endif -%}
+                                    {%- if product.images[0].width >= 1070 -%}{{ product.images[0] | img_url: '1070x' }} 1070w,{%- endif -%}
+                                    {%- if product.images[0].width >= 1500 -%}{{ product.images[0] | img_url: '1500x' }} 1500w,{%- endif -%}
+                                    {{ product.images[0] | img_url: 'master' }} {{ product.images[0].width }}w"
+                                src="{{ product.images[0] | img_url: '1500x' }}"
+                                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 1080px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                alt="{{ product.images[0].alt | escape }}"
+                                loading="lazy"
+                                width="{{ product.images[0].width }}"
+                                height="{{ product.images[0].height }}"
+                                class="collection1__back-img" 
+                            >
+                            {%- endif -%}
+                          {%- if product.images[1] != blank -%}
+                            <img
+                                srcset="{%- if product.images[1].width >= 165 -%}{{ product.images[1] | img_url: '165x' }} 165w,{%- endif -%}
+                                    {%- if product.images[1].width >= 360 -%}{{ product.images[1] | img_url: '360x' }} 360w,{%- endif -%}
+                                    {%- if product.images[1].width >= 535 -%}{{ product.images[1] | img_url: '535x' }} 535w,{%- endif -%}
+                                    {%- if product.images[1].width >= 750 -%}{{ product.images[1] | img_url: '750x' }} 750w,{%- endif -%}
+                                    {%- if product.images[1].width >= 1070 -%}{{ product.images[1] | img_url: '1070x' }} 1070w,{%- endif -%}
+                                    {%- if product.images[1].width >= 1500 -%}{{ product.images[1] | img_url: '1500x' }} 1500w,{%- endif -%}
+                                    {{ product.images[1] | img_url: 'master' }} {{ product.images[1].width }}w"
+                                src="{{ product.images[1] | img_url: '1500x' }}"
+                                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 1080px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                                alt="{{ product.images[1].alt | escape }}"
+                                loading="lazy"
+                                width="{{ product.images[1].width }}"
+                                height="{{ product.images[1].height }}"
+                                class="collection1__front-img" 
+                            >
+                            {%- endif -%}
+                        </a>
+                    </div>
+                    <div class="collection1__product-details">
+                        {%- if section.settings.show_product_name == true -%}
+                            <span class="collection1__product-name" style="color: '{{ section.settings.product_name_color }}', font-size: {{ section.settings.product_name_font_size }}px; text-align: {{ section.settings.product_name_alignment }};">
+                                {{ product.title }}
+                            </span>
+                        {%- endif -%}
+                        {%- if section.settings.show_subtitle == true -%}
+                            <span class="collection1__product-cat">{{ product.metafields.descriptors.subtitle}}</span>
+                        {%- endif -%}
+                        {%- if section.settings.show_price == true -%}
+                            <span class="collection1__product-price">{{ product.price | money }}</span>
+                        {%- endif -%}
+                    </div>
+                </div>
+            </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+	"name": "Collection Group",
+	"class": "spaced-section spaced-section--full-width",
+	"settings": [{
+			"type": "collection",
+			"id": "collection",
+			"label": "Collection"
+		},
+        {
+			"type": "header",
+			"content": "Product image"
+		},
+		{
+			"type": "paragraph",
+			"content": "Adjust the padding and background color for your product image"
+		},
+        {
+			"type": "color",
+			"id": "background-color",
+			"label": "Background color",
+			"default": "#ffffff"
+		},
+		{
+			"type": "range",
+			"id": "opacity",
+			"min": 0,
+			"max": 1,
+			"step": 0.1,
+			"label": "Background transparency",
+			"default": 0.0
+		},
+        {
+            "type": "number",
+            "id": "image_padding",
+            "label": "Padding (px)",
+            "default": 14
+        },
+        {
+			"type": "header",
+			"content": "Product name"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_product_name",
+			"label": "Show product name",
+			"default": true
+		},
+        {
+            "type": "color",
+            "id": "product_name_color",
+            "label": "Color",
+            "default": "#222222"
+        },
+        {
+            "type": "number",
+            "id": "product_name_font_size",
+            "label": "Font size",
+            "default": 20
+        },
+        {
+			"type": "range",
+			"id": "product_name_font_weight",
+			"min": 100,
+			"max": 900,
+			"step": 100,
+			"label": "Font weight",
+			"default": 600
+		},
+        {
+			"type": "select",
+			"id": "product_name_alignment",
+			"options": [{
+					"value": "left",
+					"label": "Left"
+				},
+				{
+					"value": "center",
+					"label": "Center"
+				},
+				{
+					"value": "right",
+					"label": "Right"
+				},
+				{
+					"value": "justify",
+					"label": "Justify"
+				}
+			],
+			"default": "center",
+			"label": "Alignment"
+		},
+        {
+			"type": "header",
+			"content": "Product subtitle"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_subtitle",
+			"label": "Show subtitle",
+			"default": true
+		},
+        {
+            "type": "font_picker",
+            "id": "product_subtitle_font",
+            "label": "Font",
+            "default": "poppins_n4"
+        },
+        {
+            "type": "number",
+            "id": "product_subtitle_font_size",
+            "label": "Font size",
+            "default": 14
+        },
+        {
+			"type": "range",
+			"id": "product_subtitle_font_weight",
+			"min": 100,
+			"max": 900,
+			"step": 100,
+			"label": "Font weight",
+			"default": 400
+		},
+        {
+			"type": "select",
+			"id": "product_subtitle_alignment",
+			"options": [{
+					"value": "left",
+					"label": "Left"
+				},
+				{
+					"value": "center",
+					"label": "Center"
+				},
+				{
+					"value": "right",
+					"label": "Right"
+				},
+				{
+					"value": "justify",
+					"label": "Justify"
+				}
+			],
+			"default": "center",
+			"label": "Alignment"
+		},
+        {
+			"type": "header",
+			"content": "Product price"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_price",
+			"label": "Show price",
+			"default": true
+		},
+        {
+            "type": "font_picker",
+            "id": "product_price_font",
+            "label": "Font",
+            "default": "poppins_n6"
+        },
+        {
+            "type": "number",
+            "id": "product_price_font_size",
+            "label": "Font size",
+            "default": 18
+        },
+        {
+			"type": "range",
+			"id": "product_price_font_weight",
+			"min": 100,
+			"max": 900,
+			"step": 100,
+			"label": "Font weight",
+			"default": 600
+		},
+        {
+			"type": "select",
+			"id": "product_price_alignment",
+			"options": [{
+					"value": "left",
+					"label": "Left"
+				},
+				{
+					"value": "center",
+					"label": "Center"
+				},
+				{
+					"value": "right",
+					"label": "Right"
+				},
+				{
+					"value": "justify",
+					"label": "Justify"
+				}
+			],
+			"default": "center",
+			"label": "Alignment"
+		},
+		{
+			"type": "header",
+			"content": "Columns"
+		},
+		{
+			"type": "paragraph",
+			"content": "Select the number of columns you wish to show"
+		},
+		{
+			"type": "select",
+			"id": "xxl",
+			"options": [{
+					"value": "col-xxl-6",
+					"label": "2 Columns"
+				},
+				{
+					"value": "col-xxl-4",
+					"label": "3 Columns"
+				},
+				{
+					"value": "col-xxl-3",
+					"label": "4 Columns"
+				},
+				{
+					"value": "col-xxl-2",
+					"label": "6 Columns"
+				}
+			],
+			"default": "col-xxl-2",
+			"label": "Jumbo Screens"
+		},
+		{
+			"type": "select",
+			"id": "xl",
+			"options": [{
+					"value": "col-xl-6",
+					"label": "2 Columns"
+				},
+				{
+					"value": "col-xl-4",
+					"label": "3 Columns"
+				},
+				{
+					"value": "col-xl-3",
+					"label": "4 Columns"
+				},
+				{
+					"value": "col-xl-2",
+					"label": "6 Columns"
+				}
+			],
+			"default": "col-xl-3",
+			"label": "Large Desktop"
+		},
+		{
+			"type": "select",
+			"id": "lg",
+			"options": [{
+					"value": "col-lg-6",
+					"label": "2 Columns"
+				},
+				{
+					"value": "col-lg-4",
+					"label": "3 Columns"
+				},
+				{
+					"value": "col-lg-3",
+					"label": "4 Columns"
+				},
+				{
+					"value": "col-lg-2",
+					"label": "6 Columns"
+				}
+			],
+			"default": "col-lg-4",
+			"label": "Desktop"
+		},
+		{
+			"type": "select",
+			"id": "md",
+			"options": [{
+					"value": "col-md-6",
+					"label": "2 Columns"
+				},
+				{
+					"value": "col-md-4",
+					"label": "3 Columns"
+				},
+				{
+					"value": "col-md-3",
+					"label": "4 Columns"
+				},
+				{
+					"value": "col-md-2",
+					"label": "6 Columns"
+				}
+			],
+			"default": "col-md-4",
+			"label": "Tablets"
+		},
+		{
+			"type": "select",
+			"id": "sm",
+			"options": [{
+					"value": "col-sm-12",
+					"label": "1 Columns"
+				},
+				{
+					"value": "col-sm-6",
+					"label": "2 Columns"
+				}, {
+					"value": "col-sm-4",
+					"label": "3 Columns"
+				},
+				{
+					"value": "col-sm-3",
+					"label": "4 Columns"
+				},
+				{
+					"value": "col-sm-2",
+					"label": "6 Columns"
+				}
+			],
+			"default": "col-sm-6",
+			"label": "Phones Screens"
+		}
+	],
+	"presets": [{
+		"name": "Collection Group"
+	}]
+}
+{% endschema %}

@@ -1,0 +1,210 @@
+{{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+
+<div class="hero hero2">
+  <div class="hero2__collection hero2__align-right">
+    {%- if section.settings.left_image != blank -%}
+      <img
+        srcset="{%- if section.settings.left_image.width >= 165 -%}{{ section.settings.left_image | img_url: '165x' }} 165w,{%- endif -%}
+          {%- if section.settings.left_image.width >= 360 -%}{{ section.settings.left_image | img_url: '360x' }} 360w,{%- endif -%}
+          {%- if section.settings.left_image.width >= 535 -%}{{ section.settings.left_image | img_url: '535x' }} 535w,{%- endif -%}
+          {%- if section.settings.left_image.width >= 750 -%}{{ section.settings.left_image | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.left_image.width >= 1070 -%}{{ section.settings.left_image | img_url: '1070x' }} 1070w,{%- endif -%}
+          {%- if section.settings.left_image.width >= 1500 -%}{{ section.settings.left_image | img_url: '1500x' }} 1500w,{%- endif -%}
+          {{ section.settings.left_image | img_url: 'master' }} {{ section.settings.left_image.width }}w"
+        src="{{ section.settings.left_image | img_url: '1500x' }}"
+        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 1080px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+        alt="{{ section.settings.left_image.alt | escape }}"
+        loading="lazy"
+        width="{{ section.settings.left_image.width }}"
+        height="{{ section.settings.left_image.height }}"
+        class="hero2__bg hero2__bg-position-left" 
+      >
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+      <div class="hero2__content-container" style="background-color: {{ section.settings.background-color | color_modify: 'alpha', section.settings.opacity }}; ">
+          <div class="hero2__info">
+            <a href="{{ section.settings.left_button_link}}" class="hero2__button" {{ section.shopify_attributes }}>{{ section.settings.left_button_text}}</a>
+          </div>
+      </div>
+  </div>
+  <div class="hero2__collection hero2__align-left">
+    {%- if section.settings.right_image != blank -%}
+      <img
+        srcset="{%- if section.settings.right_image.width >= 165 -%}{{ section.settings.right_image | img_url: '165x' }} 165w,{%- endif -%}
+          {%- if section.settings.right_image.width >= 360 -%}{{ section.settings.right_image | img_url: '360x' }} 360w,{%- endif -%}
+          {%- if section.settings.right_image.width >= 535 -%}{{ section.settings.right_image | img_url: '535x' }} 535w,{%- endif -%}
+          {%- if section.settings.right_image.width >= 750 -%}{{ section.settings.right_image | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.right_image.width >= 1070 -%}{{ section.settings.right_image | img_url: '1070x' }} 1070w,{%- endif -%}
+          {%- if section.settings.right_image.width >= 1500 -%}{{ section.settings.right_image | img_url: '1500x' }} 1500w,{%- endif -%}
+          {{ section.settings.right_image | img_url: 'master' }} {{ section.settings.right_image.width }}w"
+        src="{{ section.settings.right_image | img_url: '1500x' }}"
+        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 1080px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+        alt="{{ section.settings.right_image.alt | escape }}"
+        loading="lazy"
+        width="{{ section.settings.right_image.width }}"
+        height="{{ section.settings.right_image.height }}"
+        class="hero2__bg hero2__bg-position-right" 
+      >
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+      <div class="hero2__content-container" style="background-color: {{ section.settings.background-color | color_modify: 'alpha', section.settings.opacity }}; ">
+          <div class="hero2__info">
+            <a href="{{ section.settings.right_button_link }}" class="hero2__button" {{ section.shopify_attributes }}>{{ section.settings.right_button_text }}</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Hero Two",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Background"
+    },
+    {
+        "type": "color",
+        "id": "background-color",
+        "label": "Background Overlay Color",
+        "default": "#000000"
+    },
+    {
+        "type": "range",
+        "id": "opacity",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "label": "Opacity",
+        "default": 0.5
+    },
+    {
+        "type": "text",
+        "id": "left_button_text",
+        "label": "Left Button Text",
+        "default": "Frames"
+    },
+    {
+        "type": "text",
+        "id": "right_button_text",
+        "label": "Right Button Text",
+        "default": "Candles"
+    },
+    {
+      "type": "url",
+      "id": "left_button_link",
+      "label": "Left Button Link"
+    },
+    {
+      "type": "url",
+      "id": "right_button_link",
+      "label": "Right Button Link"
+    },
+    {
+      "type": "select",
+      "id": "left-button-alignment",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center",
+      "label": "Left Button Alignment"
+    },
+    {
+      "type": "select",
+      "id": "right-button-alignment",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center",
+      "label": "Right Button Alignment"
+    }
+  ],
+  
+  "presets": [
+    {
+      "name": "Hero Two"
+    }
+  ]
+}
+{% endschema %}
