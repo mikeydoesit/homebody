@@ -16,6 +16,10 @@
           "announcement-bar-0": {
             "type": "announcement",
             "settings": {
+              "text": "Welcome to our store",
+              "background_color": "#d3c5be",
+              "announcement_text_color": "#fcfcfc",
+              "link": ""
             }
           }
         },
@@ -24,8 +28,47 @@
         ],
         "settings": {
         }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "header_type": "header1",
+          "logo_width": 100,
+          "logo_position": "middle-left",
+          "menu": "main-menu",
+          "show_line_separator": true,
+          "enable_sticky_header": true
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "About",
+              "menu": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0"
+        ],
+        "settings": {
+          "footer_background": "#d3c5be",
+          "background_opacity": 1,
+          "show_social_header": true,
+          "social_column_header": "Follow Us",
+          "newsletter_enable": true,
+          "newsletter_heading": "Don't miss out! Join us to get special offers.",
+          "input_field_placeholder": "jane@gmail.com",
+          "show_social": true
+        }
       }
-    }
+    },
+    "content_for_index": [
+
+    ]
   },
   "presets": {
     "Default": {

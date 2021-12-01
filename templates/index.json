@@ -113,6 +113,7 @@
       "blocks": {
         "16383866554ebd1b70-0": {
           "type": "title",
+          "disabled": true,
           "settings": {
             "title": "Title"
           }
@@ -120,7 +121,7 @@
         "16383866554ebd1b70-1": {
           "type": "subtitle",
           "settings": {
-            "subtitle": "Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review."
+            "subtitle": "Elegant, handmade christmas decor on sale now!"
           }
         },
         "16383866554ebd1b70-2": {
@@ -137,8 +138,9 @@
         "16383866554ebd1b70-2"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/homedecor3.jpg",
         "background-color": "#000000",
-        "opacity": 0.5,
+        "opacity": 0.3,
         "cta-alignment": "center"
       }
     }
