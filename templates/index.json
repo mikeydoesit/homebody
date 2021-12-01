@@ -82,7 +82,7 @@
     "1638386643b499e3af": {
       "type": "collection-group",
       "settings": {
-        "collection": "",
+        "collection": "home-decor",
         "background-color": "#ffffff",
         "opacity": 0,
         "image_padding": 14,
@@ -101,11 +101,11 @@
         "product_price_font_size": 18,
         "product_price_font_weight": 600,
         "product_price_alignment": "center",
-        "xxl": "col-xxl-2",
-        "xl": "col-xl-3",
+        "xxl": "col-xxl-4",
+        "xl": "col-xl-4",
         "lg": "col-lg-4",
         "md": "col-md-4",
-        "sm": "col-sm-6"
+        "sm": "col-sm-12"
       }
     },
     "16383866554ca409d0": {
