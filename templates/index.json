@@ -38,7 +38,7 @@
     "163838659697b75320": {
       "type": "collection-group",
       "settings": {
-        "collection": "",
+        "collection": "candles",
         "background-color": "#ffffff",
         "opacity": 0,
         "image_padding": 14,
