@@ -1,0 +1,1 @@
+.header__promotion-banner{background:var(--announcebar-default-bgd);color:var(--announcebar-default-txtclr);width:-webkit-fill-available;display:flex;justify-content:center;padding:10px 0;position:-webkit-sticky;position:sticky;top:0;z-index:100}.header__promotion-banner span{display:block;text-transform:uppercase;font-size:12px;font-weight:600;letter-spacing:1px}

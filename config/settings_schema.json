@@ -1,15 +1,26 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Dawn",
-    "theme_version": "2.4.0",
-    "theme_author": "Shopify",
+    "theme_name": "Homebody",
+    "theme_version": "1.0.0",
+    "theme_author": "Michael Squire Obeng",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes/os20/themes-by-shopify/dawn",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_support_url": "https://www.michaelsquireobeng.com/#contact"
   },
   {
     "name": "t:settings_schema.colors.name",
     "settings": [
+      {
+        "type": "header",
+        "content": "Global Styles"
+      },
+      {
+        "type": "color",
+        "id": "theme_bgd",
+        "default": "#fcfcfc",
+        "label": "Body background",
+        "info": "Select the color of your theme background"
+      },
       {
         "type": "header",
         "content": "t:settings_schema.colors.settings.header__1.content"

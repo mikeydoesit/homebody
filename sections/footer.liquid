@@ -14,6 +14,8 @@
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'disclosure.css' | asset_url | stylesheet_tag }}</noscript>
 
+{{ 'Footer.css' | asset_url | stylesheet_tag }}
+
 <footer class="footer" style="background-color: {{ section.settings.footer_background | color_modify: 'alpha', section.settings.background_opacity }};">
   <div class="container">
       <div class="row">

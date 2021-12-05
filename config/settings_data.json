@@ -134,11 +134,6 @@
               "type": "link_list",
               "settings": {
               }
-            },
-            "text": {
-              "type": "text",
-              "settings": {
-              }
             }
           },
           "block_order": [

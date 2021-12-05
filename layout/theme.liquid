@@ -39,6 +39,18 @@
     %}
 
     {% style %}
+      :root {
+        --body-bgd: {{ settings.theme_bgd }};
+        --announcebar-default-bgd: #d3c5be;
+        --announcebar-default-txtclr: #fcfcfc;
+      }
+      
+      body {
+        background: var(--body-bgd)
+      }
+    {% endstyle %}
+
+    {% style %}
       {{ settings.type_body_font | font_face: font_display: 'swap' }}
       {{ body_font_bold | font_face: font_display: 'swap' }}
       {{ body_font_italic | font_face: font_display: 'swap' }}
@@ -113,7 +125,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:wght@600;700;800&family=Poppins:wght@100;300;400;500;600;700&display=swap" rel="stylesheet" />
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'styles.css' | asset_url | stylesheet_tag }}
+    {{ 'vendors.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
@@ -129,7 +141,7 @@
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
   </head>
 
-  <body class="gradient">
+  <body style="background-color: var(--body-bgd)">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
