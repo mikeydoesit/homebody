@@ -12,20 +12,6 @@
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
-        "blocks": {
-          "announcement-bar-0": {
-            "type": "announcement",
-            "settings": {
-              "text": "Welcome to our store",
-              "background_color": "#d3c5be",
-              "announcement_text_color": "#fcfcfc",
-              "link": ""
-            }
-          }
-        },
-        "block_order": [
-          "announcement-bar-0"
-        ],
         "settings": {
         }
       },
@@ -104,7 +90,6 @@
             "announcement-bar-0": {
               "type": "announcement",
               "settings": {
-                "color_scheme": "background-1"
               }
             }
           },
@@ -137,11 +122,9 @@
             }
           },
           "block_order": [
-            "menu",
-            "text"
+            "menu"
           ],
           "settings": {
-            "color_scheme": "accent-1"
           }
         }
       }
