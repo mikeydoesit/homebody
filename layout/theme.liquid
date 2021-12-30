@@ -53,7 +53,8 @@
       }
       
       .transparent-nav .header {
-          background-color: transparent
+        background-color: transparent;
+        position: absolute
       }
     {% endstyle %}
 
@@ -148,7 +149,7 @@
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
   </head>
 
-  <body class="fixed-nav transparent-nav" style="background-color: var(--body-bgd)">
+  <body class="{% if settings.fixed_nav == true %}fixed-nav {% endif %}{% if settings.transparent_nav == true %}transparent-nav{% endif %}" style="background-color: var(--body-bgd)">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -193,5 +194,25 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <script>
+      const bodyTag = document.getElementsByTagName('body')[0];
+      const header = document.querySelector('.header');
+
+      if (bodyTag.classList.contains('fixed-nav') && bodyTag.classList.contains('transparent-nav')) {  
+        header.style.position = "fixed";
+
+        const onScroll = () => {
+          const scrollLocation = document.documentElement.scrollTop;
+
+          if (scrollLocation > 50) {
+            bodyTag.classList.remove('transparent-nav')
+          } else {
+            bodyTag.classList.add('transparent-nav')
+          }
+        }
+        window.addEventListener('scroll', onScroll)
+      }
+    </script>
   </body>
 </html>

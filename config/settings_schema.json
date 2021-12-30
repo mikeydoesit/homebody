@@ -23,6 +23,22 @@
       },
       {
         "type": "header",
+        "content": "Header Behaviour"
+      },
+      {
+        "type": "checkbox",
+        "id": "fixed_nav",
+        "label": "Pin header to the top",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "transparent_nav",
+        "label": "Make header transparent",
+        "default": false
+      },
+      {
+        "type": "header",
         "content": "t:settings_schema.colors.settings.header__1.content"
       },
       {
