@@ -49,12 +49,88 @@
         background: var(--body-bgd)
       }
       .fixed-nav .header {
+        position: -webkit-sticky;
+        position: sticky
+      }
+
+      .transparent-nav .header {
+          background-color: transparent;
           position: fixed
       }
-      
-      .transparent-nav .header {
-        background-color: transparent;
-        position: absolute
+
+      .dashboard {
+          display: flex;
+          flex-direction: row;
+          height: 100vh;
+          padding: 35px 1.5vw
+      }
+
+      .accountpagemain {
+          width: 100%;
+          padding: 0 4vw;
+          height: 100%
+      }
+
+      .orderpagemain {
+          padding: 0 4vw;
+          width: 100%;
+          height: 100%
+      }
+
+      .addressList {
+          width: 100%;
+          padding: 0 14px 14px 0;
+          height: 100%
+      }
+
+      .addressList::-webkit-scrollbar {
+          width: 4px
+      }
+
+      .addressList::-webkit-scrollbar-track {
+          background: #d3c5be
+      }
+
+      .addressList::-webkit-scrollbar-thumb {
+          background-color: #afa39d;
+          border-radius: 0px;
+          border: 0px
+      }
+
+      @media(min-width: 300px)and (max-width: 575.98px) {
+          .dashboard {
+              width: -webkit-fill-available;
+              padding-top: 21px
+          }
+
+          .accountpagemain,
+          .orderpagemain {
+              overflow-y: scroll
+          }
+      }
+
+      @media(min-width: 577px)and (max-width: 767.98px) {
+          .dashboard {
+              width: -webkit-fill-available;
+              padding-top: 21px
+          }
+
+          .accountpagemain,
+          .orderpagemain {
+              overflow-y: scroll
+          }
+      }
+
+      @media(min-width: 767.99px)and (max-width: 991.98px) {
+          .dashboard {
+              width: -webkit-fill-available;
+              padding-top: 21px
+          }
+
+          .accountpagemain,
+          .orderpagemain {
+              overflow-y: scroll
+          }
       }
     {% endstyle %}
 

@@ -1,23 +1,281 @@
 <style type="text/css">
-  .template-404 .title + * {
-    margin-top: 1rem;
-  }
+  .four0four {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 49px
+}
 
-  @media screen and (min-width: 750px) {
-    .template-404 .title + * {
-      margin-top: 2rem;
+.four0four__title h1 {
+    font-size: 14rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    line-height: 1
+}
+
+.four0four__subtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 1.1rem
+}
+
+.four0four__subtitle__bold {
+    font-weight: 600
+}
+
+.four0four__subtitle__normal {
+    font-weight: 400;
+    font-size: 1rem
+}
+
+.four0four__subtitle span:first-of-type {
+    padding-bottom: 7px;
+    letter-spacing: 1px
+}
+
+.four0four__buttons {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 28px
+}
+
+.four0four__buttons__home {
+    margin-right: 21px
+}
+
+.four0four__buttons a {
+    transition: all .4s cubic-bezier(0.165, 0.85, 0.45, 1);
+    -moz-transition: all .4s cubic-bezier(0.165, 0.85, 0.45, 1);
+    -webkit-transition: all .4s cubic-bezier(0.165, 0.85, 0.45, 1);
+    -o-transition: all .4s cubic-bezier(0.165, 0.85, 0.45, 1);
+    cursor: pointer;
+    letter-spacing: .5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 21px;
+    height: 100%;
+    border-radius: 20px;
+    border: 2px solid #d3c5be;
+    font-size: .85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: inherit;
+    text-decoration: none
+}
+
+.four0four__buttons a:hover {
+    background-color: #d3c5be;
+    color: #fcfcfc
+}
+
+@media(min-width: 300px)and (max-width: 575.98px) {
+    .four0four {
+        padding: 21px
     }
-  }
+
+    .four0four__title h1 {
+        font-size: 7rem
+    }
+
+    .four0four__subtitle {
+        font-size: 1rem;
+        text-align: justify;
+        -moz-text-align-last: justify;
+        text-align-last: justify
+    }
+
+    .four0four__subtitle__normal {
+        font-size: 1rem;
+        text-align: justify;
+        -moz-text-align-last: justify;
+        text-align-last: justify
+    }
+
+    .four0four__buttons {
+        flex-direction: column;
+        width: 75vw;
+        height: auto
+    }
+
+    .four0four__buttons__home {
+        margin: 0 0 14px;
+        width: 100%
+    }
+
+    .four0four__buttons__search {
+        width: 100%
+    }
+}
+
+@media(min-width: 577px)and (max-width: 767.98px) {
+    .four0four {
+        padding: 21px
+    }
+
+    .four0four__title h1 {
+        font-size: 7rem
+    }
+
+    .four0four__subtitle {
+        font-size: 1rem;
+        text-align: justify;
+        -moz-text-align-last: justify;
+        text-align-last: justify
+    }
+
+    .four0four__subtitle__normal {
+        font-size: 1rem;
+        text-align: justify;
+        -moz-text-align-last: justify;
+        text-align-last: justify
+    }
+
+    .four0four__buttons {
+        height: auto
+    }
+
+    .four0four__buttons__home {
+        margin: 0 0 14px;
+        width: 100%
+    }
+
+    .four0four__buttons__search {
+        width: 100%
+    }
+}
 </style>
 
-<div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
-  </a>
+<div class="four0four">
+  {%- for block in section.blocks -%}
+    {% case block.type %}
+      {%- when 'title' -%}
+        <div class="four0four__title">
+          <h1 {{ block.shopify_attributes }}>{{ block.settings.title | escape }}</h1>
+        </div>
+      {%- when 'boldSubtitle' -%}
+        <div class="four0four__subtitle">
+          <span class="four0four__subtitle__bold" {{ block.shopify_attributes }}>
+            {{ block.settings.boldSubtitle | escape }}
+          </span>
+          {%- when 'regSubtitle' -%}
+          <span class="four0four__subtitle__normal" {{ block.shopify_attributes }}>
+            {{ block.settings.regSubtitle | escape }}
+          </span>
+        </div>
+        <div class="four0four__buttons">
+        {%- when 'buttons' -%}
+          <a href="{{ block.settings.first_button_link }}" class="four0four__buttons__home" {{ block.shopify_attributes }}>{{ block.settings.first_button_text | escape }}</a>
+          <a href="{{ block.settings.second_button_link }}" class="four0four__buttons__search" {{ block.shopify_attributes }}>{{ block.settings.second_button_text | escape }}</a>
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
 </div>
+
+{% schema %}
+{
+  "name": "404",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+        "type": "color",
+        "id": "background-color",
+        "label": "Background Color",
+        "default": "#f1f1f1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Enter Title",
+            "default": "404"
+        }
+      ]
+    },
+    {
+      "type": "boldSubtitle",
+      "name": "Bold Subtitle",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "boldSubtitle",
+          "default": "THE PAGE YOU WERE LOOKING FOR DOES NOT EXIST.",
+          "label": "Enter Subtitle"
+        }
+      ]
+    },
+    {
+      "type": "regSubtitle",
+      "name": "Regular Subtitle",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "regSubtitle",
+          "default": "YOU MAY HAVE MISTYPED THE ADDRESS OR THE PAGE MAY HAVE MOVED.",
+          "label": "Enter Subtitle"
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.image-with-text.blocks.button.name",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "first_button_text",
+          "default": "Go Home",
+          "label": "First Button Text"
+        },
+        {
+          "type": "url",
+          "id": "first_button_link",
+          "label": "First Button Link"
+        },
+        {
+          "type": "text",
+          "id": "second_button_text",
+          "default": "Search",
+          "label": "Second Button Text"
+        },
+        {
+          "type": "url",
+          "id": "second_button_link",
+          "label": "Second Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "404",
+      "blocks": [
+        {
+          "type": "title"
+        },
+        {
+          "type": "boldSubtitle"
+        },
+        {
+          "type": "regSubtitle"
+        },
+        {
+          "type": "buttons"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

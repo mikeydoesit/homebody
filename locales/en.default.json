@@ -204,8 +204,9 @@
       }
     },
     "404": {
-      "title": "Page not found",
-      "subtext": "404"
+      "title": "404",
+      "subtext1": "The page you were looking for does not exist.",
+      "subtext2": "You may have mistyped the address or the page may have moved."
     }
   },
   "sections": {
