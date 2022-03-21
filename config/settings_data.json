@@ -1,5 +1,7 @@
 {
   "current": {
+    "fixed_nav": true,
+    "transparent_nav": true,
     "colors_solid_button_labels": "#FFFFFF",
     "colors_accent_1": "#121212",
     "colors_accent_2": "#334FB4",
@@ -21,7 +23,7 @@
           "header_type": "header1",
           "logo_width": 100,
           "logo_position": "middle-left",
-          "menu": "main-menu",
+          "menu": "main-menu-2",
           "show_line_separator": true,
           "enable_sticky_header": true
         }
