@@ -134,4 +134,4 @@ class CartItems extends HTMLElement {
   }
 }
 
-customElements.define('cart-items', CartItems);
+customElements.define('cart-drawer', CartItems);

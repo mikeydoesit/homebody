@@ -1,6 +1,6 @@
 {{ 'Header1.css' | asset_url | stylesheet_tag }}
 
-{% case section.settings.header_type%}
+{% case section.settings.header_type %}
   {% when 'header1'%}  
   <header class="header header1">
     <div class="header1__header-main">
@@ -58,7 +58,7 @@
               <a class="account-btn" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">ACCOUNT</a>
             {%- endif -%}
             
-            <a class="cart-btn" href="{{ routes.cart_url }}"><i class="fas fa-shopping-cart"></i></a>
+            <span class="cart-btn"><i class="fas fa-shopping-cart"></i></span>
         </div>
     </div>
     {%- if section.settings.menu != blank -%}
@@ -123,6 +123,9 @@
   </header>
 
 {% endcase%}
+
+
+
 
 {% schema %}
 {
