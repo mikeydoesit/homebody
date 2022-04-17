@@ -4,7 +4,9 @@
       "type": "main-product",
       "blocks": {
         "title": {
-          "type": "title"
+          "type": "title",
+          "settings": {
+          }
         },
         "subtitle": {
           "type": "text",
@@ -13,30 +15,64 @@
             "text_style": "subtitle"
           }
         },
+        "e8d168fb-14a1-4517-9db6-83da56084c9d": {
+          "type": "shopify:\/\/apps\/product-reviews\/blocks\/star_rating\/bae150af-8da8-48b2-9867-398188115e5f",
+          "settings": {
+            "stars_fill_color": "#000000",
+            "star_size": 15,
+            "text_align": "flex-start",
+            "product": "{{product}}",
+            "stars_text_empty": "No reviews"
+          }
+        },
         "price": {
-          "type": "price"
+          "type": "price",
+          "settings": {
+          }
         },
         "quantity_selector": {
-          "type": "quantity_selector"
+          "type": "quantity_selector",
+          "settings": {
+          }
         },
         "buy_buttons": {
-          "type": "buy_buttons"
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
         },
         "description": {
-          "type": "description"
+          "type": "description",
+          "settings": {
+          }
         }
       },
       "block_order": [
         "title",
         "subtitle",
+        "e8d168fb-14a1-4517-9db6-83da56084c9d",
         "price",
         "quantity_selector",
         "buy_buttons",
         "description"
-      ]
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "hide_variants": false,
+        "enable_video_looping": false
+      }
     },
     "product-recommendations": {
-      "type": "product-recommendations"
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "show_rating": false
+      }
     }
   },
   "order": [
