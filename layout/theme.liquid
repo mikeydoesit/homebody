@@ -44,20 +44,47 @@
         --announcebar-default-bgd: #d3c5be;
         --announcebar-default-txtclr: #fcfcfc;
       }
-      
       body {
-        background: var(--body-bgd)
+          background: var(--body-bgd)
       }
+      .fixed-nav #shopify-section-header {
+          position: -webkit-sticky;
+          position: sticky;
+          top: 0
+      }
+      
+      .transparent-nav #shopify-section-header {
+          background-color: transparent;
+      }
+      
       .fixed-nav .header {
-        position: -webkit-sticky;
-        position: sticky
+          position: -webkit-sticky;
+          position: sticky;
+          top: 0
       }
-
+      
       .transparent-nav .header {
           background-color: transparent;
-          position: fixed
       }
-
+      .index--transparent #shopify-section-header {
+        width: 100%;
+        position: absolute
+      }
+      .index--transparent.fixed-nav #shopify-section-header {
+        width: 100%;
+        position: sticky
+      }
+      .fixed-nav.transparent-nav #shopify-section-header {
+        position: -webkit-sticky;
+        position: sticky;
+        width: 100%;
+        top: 0
+      }
+      .fixed-nav.transparent-nav.index--transparent #shopify-section-header {
+        position: -webkit-fixed;
+        position: fixed;
+        top: 0
+      }
       .dashboard {
           display: flex;
           flex-direction: row;
@@ -225,7 +252,7 @@
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
   </head>
 
-  <body class="{% if settings.fixed_nav == true %}fixed-nav {% endif %}{% if settings.transparent_nav == true %}transparent-nav{% endif %}" style="background-color: var(--body-bgd)">
+  <body class="{% if settings.fixed_nav == true %}fixed-nav {% endif %}{% if settings.transparent_nav == true %}transparent-nav{% endif %}{% if template.name == 'index' and settings.transparent_nav == true %} index--transparent{% endif %}" style="background-color: var(--body-bgd)">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -275,15 +302,16 @@
 
     <script>
       const bodyTag = document.getElementsByTagName('body')[0];
-      const header = document.querySelector('.header');
+      const header = document.querySelector('#shopify-section-header');
 
       if (bodyTag.classList.contains('fixed-nav') && bodyTag.classList.contains('transparent-nav')) {  
-        header.style.position = "fixed";
-
+        // header.style.position = "sticky";
+        
         const onScroll = () => {
           const scrollLocation = document.documentElement.scrollTop;
+          const headerHeight = header.style.height
 
-          if (scrollLocation > 50) {
+          if (scrollLocation > 100) {
             bodyTag.classList.remove('transparent-nav')
           } else {
             bodyTag.classList.add('transparent-nav')

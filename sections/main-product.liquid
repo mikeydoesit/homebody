@@ -115,17 +115,27 @@
                   {{ form | payment_button }}
                 {%- endif -%}
             {%- endform -%}
+          {%- when 'collapsible_tab' -%}
+            <div class="product__accordion accordion productmain1__details__accordion" {{ block.shopify_attributes }}>
+              <details id="Details-{{ block.id }}-{{ section.id }}" class="productmain1__details__accordion__description">
+                <summary class="productmain1__details__accordion__description__button">
+                  <div class="summary__title ">
+                    {% render 'icon-accordion', icon: block.settings.icon %}
+                    <span class="productmain1__details__accordion__description__button__title">
+                      {{ block.settings.heading | default: block.settings.page.title }}
+                    </span>
+                  </div>
+                  {% render 'icon-caret' %}
+                </summary>
+                <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                  {{ block.settings.content }}
+                  {{ block.settings.page.content }}
+                </div>
+              </details>
+            </div>
       {% endcase %}
     {% endfor %}
-      <!-- <div class="productmain1__details__addToCart">
-          <span class="productmain1__details__addToCart__button">
-              Add to Cart
-          </span>
-          <span class="productmain1__details__addToWishlist__button">
-              <i class="far fa-heart fa-lg"></i>
-          </span>
-      </div> -->
-      <div class="productmain1__details__accordion">
+      <!-- <div class="productmain1__details__accordion">
           <div class="productmain1__details__accordion__description">
               <div class="productmain1__details__accordion__description__button">
                   <span class="productmain1__details__accordion__description__button__title">Description</span>
@@ -138,7 +148,7 @@
                   <span class="productmain1__details__accordion__extrainfo__button__icon"><i class="fas fa-grip-horizontal"></i></span>
               </div>
           </div>
-      </div>
+      </div> -->
   </div>
 </div>
 
