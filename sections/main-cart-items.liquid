@@ -1,11 +1,9 @@
 {{ 'Cart1.css' | asset_url | stylesheet_tag }}
 
-<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
-
-<cart-items class="cart1">
+<div class="cart1">
   <div class="cart1__overlay"></div>
   <div class="cart1__wrapper">
-    <form action="{{ routes.cart_url }}" method="post">
+    {% form 'cart', cart %}
       <div class="cart1__wrapper__header">
           <h6>{{ 'sections.cart.title' | t }}</h6><i class="fa fa-times-circle" aria-hidden="true"></i>
       </div>
@@ -31,7 +29,7 @@
                       <span>{{ item.original_price | money }}</span>
                     </div>
                     <div class="cart1__wrapper__content__list__link__item__info__quantity">
-                      <span class="cart1__wrapper__content__list__link__item__info__quantity__decrement">{% render 'icon-minus' %}</span>
+                      <span class="cart1__wrapper__content__list__link__item__info__quantity__decrement">-</span>
                       <span>
                         <input
                           type="number"
@@ -43,10 +41,10 @@
                           data-index="{{ item.index | plus: 1 }}"
                         >
                       </span>
-                      <span class="cart1__wrapper__content__list__link__item__info__quantity__increment">{% render 'icon-plus' %}</span>
+                      <span class="cart1__wrapper__content__list__link__item__info__quantity__increment">+</span>
                     </div>
                     <div class="cart1__wrapper__content__list__link__item__delete">
-                      {% render 'icon-remove' %}
+                      <i class="fa fa-trash" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -69,9 +67,9 @@
             <input type="submit" class="cart1__wrapper__footer__checkout__btn" name="checkout" value="Checkout">
           </div>
       </div>
-    </form>
+    {% endform%}
   </div>
-</cart-items>
+</div>
 
 {% javascript %}
   const cartBtn = document.querySelector('.cart-btn')

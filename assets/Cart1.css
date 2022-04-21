@@ -71,8 +71,7 @@
 .cart1__wrapper__content {
     overflow-y: scroll;
     padding: 14px 14px 49px;
-    margin-bottom: 21px;
-    height: -webkit-fill-available
+    margin-bottom: 21px
 }
 
 .cart1__wrapper__content__list {
@@ -142,7 +141,9 @@
 }
 
 .cart1__wrapper__content__list__link__item__info__quantity {
-    padding-bottom: 14px
+    padding-bottom: 14px;
+    display: flex;
+    align-items: center
 }
 
 .cart1__wrapper__content__list__link__item__info__quantity__decrement,
@@ -175,6 +176,25 @@
 .cart1__wrapper__content__list__link__item__info__quantity span:nth-of-type(1),
 .cart1__wrapper__content__list__link__item__info__quantity span:nth-of-type(2) {
     border-right: none
+}
+
+.cart1__wrapper__content__list__link__item__info__quantity span input[type=number] {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    text-align: center;
+    border: none;
+    box-shadow: none;
+    font-size: .85rem;
+    font-weight: 600
+}
+
+.cart1__wrapper__content__list__link__item__info__quantity span input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none
 }
 
 .cart1__wrapper__content__list__link__item__delete i {
@@ -234,9 +254,11 @@
     letter-spacing: 1px;
     font-size: .9rem;
     font-weight: 500;
+    background-color: transparent;
+    -webkit-appearance: none;
     border: none;
-    color: #d3c5be;
-    background: transparent
+    outline: none;
+    color: #fcfcfc
 }
 
 @media(min-width: 300px)and (max-width: 575.98px) {

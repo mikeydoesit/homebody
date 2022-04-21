@@ -77,6 +77,38 @@
     font-size: 1.4rem
 }
 
+.productmain1__details__price__sale {
+    display: flex;
+    grid-gap: 14px;
+    align-items: center
+}
+
+.productmain1__details__price__sale h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0
+}
+
+.productmain1__details__price__sale h4 s {
+    color: tomato
+}
+
+.productmain1__details__price__sale h4:first-of-type {
+    color: tomato
+}
+
+.productmain1__details__price .badges {
+    padding-top: 1.4rem
+}
+
+.productmain1__details__price h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1
+}
+
 .productmain1__details__ratings {
     margin: 1.4rem 0
 }
@@ -121,6 +153,11 @@
     -moz-appearance: textfield
 }
 
+.productmain1__details__quantity__amount:focus-visible {
+    outline: none;
+    box-shadow: none
+}
+
 .productmain1__details__quantity__amount::-webkit-outer-spin-button,
 .productmain1__details__quantity__amount::-webkit-inner-spin-button {
     -webkit-appearance: none
@@ -136,7 +173,8 @@
     justify-content: center;
     align-items: center;
     margin-right: 14px;
-    font-weight: 600
+    font-weight: 600;
+    background-color: transparent
 }
 
 .productmain1__details .shopify-payment-button__button {
@@ -212,7 +250,7 @@
 }
 
 .productmain1__details__accordion {
-    padding: 2.1rem 0
+    padding: 0
 }
 
 .productmain1__details__accordion__description,
@@ -225,6 +263,16 @@
     border-bottom: 1.5px solid #776969
 }
 
+.productmain1__details__accordion__description p,
+.productmain1__details__accordion__extrainfo p {
+    font-size: .85rem;
+    line-height: 1.5;
+    color: #212529;
+    font-weight: 300;
+    text-align: justify;
+    padding-top: 14px
+}
+
 .productmain1__details__accordion__description__button,
 .productmain1__details__accordion__extrainfo__button {
     display: flex;
@@ -234,12 +282,24 @@
     cursor: pointer
 }
 
+.productmain1__details__accordion__description__button .summary__title,
+.productmain1__details__accordion__extrainfo__button .summary__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.productmain1__details__accordion__description__button .summary__title svg,
+.productmain1__details__accordion__extrainfo__button .summary__title svg {
+    margin-right: 14px
+}
+
 .productmain1__details__accordion__description__button__title,
 .productmain1__details__accordion__extrainfo__button__title {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 500;
-    font-size: .85rem;
+    font-size: .9rem;
     display: flex;
     align-items: center
 }
