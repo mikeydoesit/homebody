@@ -1,14 +1,26 @@
 {{ 'Cart1.css' | asset_url | stylesheet_tag }}
 
-<div class="cart1">
+<div class="cart1"
+    x-data="{
+              updateCart() {
+                // Send fetch request
+                fetch(window.Shopify.routes.root + '?view=cart')
+                .then(response => response.text())
+                .then(cartData => {
+                  console.log('I just booped')
+                  $refs.cart_content.innerHTML = cartData
+                })
+              }
+            }"
+    @cart-updated.window="updateCart">
   <div class="cart1__overlay"></div>
-  <div class="cart1__wrapper">
-    {% form 'cart', cart %}
+  <div class="cart1__wrapper" x-ref="cart_content" >
+    <form method="post" action="{{ routes.cart_url }}">
       <div class="cart1__wrapper__header">
           <h6>{{ 'sections.cart.title' | t }}</h6><i class="fa fa-times-circle" aria-hidden="true"></i>
       </div>
       <div class="cart1__wrapper__content">
-        {%- if cart != empty-%}
+        {%- if cart.item_count > 0 -%}
         <ul class="cart1__wrapper__content__list">
         {%- for item in cart.items -%}
         <li>
@@ -67,45 +79,32 @@
             <input type="submit" class="cart1__wrapper__footer__checkout__btn" name="checkout" value="Checkout">
           </div>
       </div>
-    {% endform%}
+    </form>
   </div>
 </div>
 
-{% javascript %}
-  const cartBtn = document.querySelector('.cart-btn')
-  const cart = document.querySelector('.cart1')
-  const cartWrapper = document.querySelector('.cart1__wrapper')
-  const closeCartBtn = document.querySelector('.fa-times-circle')
-  const cartOverlay = document.querySelector('.cart1__overlay')
+<script>
+  // const cartBtn = document.querySelector('.cart-btn')
+  // const cart = document.querySelector('.cart1')
+  // const cartWrapper = document.querySelector('.cart1__wrapper')
+  // const closeCartBtn = document.querySelector('.fa-times-circle')
+  // const cartOverlay = document.querySelector('.cart1__overlay')
 
-  const toggleCart = () => {
-    if (cart.style.width == 0 || cart.style.width == "0%" ) {
-      cartOverlay.style.width = "100%"
-      cartWrapper.style.width = "375px"
-      cart.style.width = "100%"
-    } else {
-      cartOverlay.style.width = "0%"
-      cartWrapper.style.width = "0px"
-      cart.style.width = "0%"
-    }
-  }
+  // const toggleCart = () => {
+  //   console.log('i just duffied!')
+  //   if (cart.style.width == 0 || cart.style.width == "0%" ) {
+  //     cartOverlay.style.width = "100%"
+  //     cartWrapper.style.width = "375px"
+  //     cart.style.width = "100%"
+  //   } else {
+  //     cartOverlay.style.width = "0%"
+  //     cartWrapper.style.width = "0px"
+  //     cart.style.width = "0%"
+  //   }
+  // }
 
-  closeCartBtn.addEventListener('click', toggleCart)
-  cartBtn.addEventListener('click', toggleCart)
-  cartOverlay.addEventListener('click', toggleCart)
+  // closeCartBtn.addEventListener('click', toggleCart)
+  // cartBtn.addEventListener('click', toggleCart)
+  // cartOverlay.addEventListener('click', toggleCart)
 
-{% endjavascript %}
-
-{% schema %}
-{
-  "name": "t:sections.main-cart-items.name",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "default": false,
-      "label": "t:sections.main-cart-items.settings.show_vendor.label"
-    }
-  ]
-}
-{% endschema %}
+</script>

@@ -260,9 +260,3 @@
     outline: none;
     color: #fcfcfc
 }
-
-@media(min-width: 300px)and (max-width: 575.98px) {
-    .cart1__wrapper {
-        width: 100vw
-    }
-}

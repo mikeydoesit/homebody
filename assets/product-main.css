@@ -315,7 +315,6 @@
 
     .productmain1__feature {
         height: -webkit-fill-available;
-        max-width: 300px;
         width: 100%
     }
 
@@ -335,6 +334,10 @@
 
     .productmain1__details__quantity span:last-of-type {
         margin: 0
+    }
+
+    .productmain1__details__addToCartWrapper {
+        width: 100%
     }
 
     .productmain1__details__accordion {

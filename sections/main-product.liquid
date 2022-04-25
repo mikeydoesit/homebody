@@ -175,7 +175,7 @@
         </div>
 
           {%- when 'buy_buttons' -%}
-        <div x-data="{
+        <div class="productmain1__details__addToCartWrapper" x-data="{
                 qty: 1,
                 addToCart() {
                   let formdata = new FormData($refs.product_form);
@@ -189,6 +189,7 @@
                   })
                   .then(response => {
                     console.log(response)
+                    this.$dispatch('cart-updated')
                   })
                   .catch((error) => {
                     console.error('Error:', error);

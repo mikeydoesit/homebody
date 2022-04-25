@@ -5,27 +5,43 @@
   <header class="header header1">
     <div class="header1__header-main">
       {%- if section.settings.menu != blank -%}
-        <div class="header1__menu-toggle-wrapper"><input type="checkbox" class="menu-toggle"><span></span><span></span><span></span>
-            <ul class="header1__mobile-navigation">
-              {%- for link in section.settings.menu.links -%}
-              {%- if link.links == blank -%}
-                <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
-                {%-else-%}
-                <li class="header1__expanding-link">
-                  <a href="{{ link.url }}">{{ link.title | escape }} 
-                    <i class="fas fa-chevron-down"></i>
-                    <ul class="header1__sub-links">
-                      {%- for childlink in link.links -%}
-                        <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
-                      {%-endfor-%}
-                    </ul>
-                  </a>
-                </li>
-                {%-endif-%}
-                {%-endfor-%}
-            </ul>
+        <div class="header1__menu-toggle-wrapper" 
+            x-data="{ showMenu: false }"
+            @toggle-cart.window="showMenu = !showMenu">
+          <input type="checkbox" class="menu-toggle" @click="$dispatch('toggle-cart')">
+          <span></span>
+          <span></span>
+          <span></span>
+          <ul class="header1__mobile-navigation" 
+          x-show="showMenu"
+          x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
+          x-transition:enter-start="-translate-x-full opacity-0" 
+          x-transition:enter-end="translate-x-0 opacity-100" 
+          x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
+          x-transition:leave-start="translate-x-0" 
+          x-transition:leave-end="-translate-x-full opacity-0">
+            {%- for link in section.settings.menu.links -%}
+            {%- if link.links == blank -%}
+              <li>
+                <a href="{{ link.url }}">{{ link.title | escape }}</a>
+              </li>
+              {%-else-%}
+              <li class="header1__expanding-link">
+                <a href="{{ link.url }}">
+                  {{ link.title | escape }} 
+                  <i class="fas fa-chevron-down"></i>
+                  <ul class="header1__sub-links">
+                    {%- for childlink in link.links -%}
+                      <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                    {%-endfor-%}
+                  </ul>
+                </a>
+              </li>
+            {%-endif-%}
+            {%-endfor-%}
+          </ul>
         </div>
-      {%-endif-%}
+      {%- endif -%}
 
         {% comment %} Logo {% endcomment %}
         <div class="logo-wrapper">
@@ -48,7 +64,7 @@
         <div class="search-wrapper">
           <input type="text" placeholder="search"><a href="/link"><i class="fas fa-search"></i></a>
         </div>
-        <div class="user-wrapper">
+        <div class="user-wrapper" x-data>
             <div class="search">
               <input type="checkbox" class="checkbox">
               <input type="text" class="search-box">
@@ -58,7 +74,7 @@
               <a class="account-btn" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">ACCOUNT</a>
             {%- endif -%}
             
-            <span class="cart-btn"><i class="fas fa-shopping-cart"></i></span>
+            <span class="cart-btn" @click="$dispatch('toggle-cart')"><i class="fas fa-shopping-cart"></i></span>
         </div>
     </div>
     {%- if section.settings.menu != blank -%}
