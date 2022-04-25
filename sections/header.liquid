@@ -6,9 +6,12 @@
     <div class="header1__header-main">
       {%- if section.settings.menu != blank -%}
         <div class="header1__menu-toggle-wrapper" 
-            x-data="{ showMenu: false }"
-            @toggle-cart.window="showMenu = !showMenu">
-          <input type="checkbox" class="menu-toggle" @click="$dispatch('toggle-cart')">
+            x-data="{ 
+              showMenu: false 
+            }"
+            @toggle-menu.window="showMenu = !showMenu"
+            >
+          <input type="checkbox" class="menu-toggle" @click="$dispatch('toggle-menu')">
           <span></span>
           <span></span>
           <span></span>

@@ -1,8 +1,8 @@
 {% layout none %}
 
 <form method="post" action="{{ routes.cart_url }}">
-    <div class="cart1__wrapper__header">
-        <h6>{{ 'sections.cart.title' | t }}</h6><i class="fa fa-times-circle" aria-hidden="true"></i>
+    <div class="cart1__wrapper__header" x-data>
+        <h6>{{ 'sections.cart.title' | t }}</h6><i class="fa fa-times-circle" @click="$dispatch('toggle-cart')" aria-hidden="true"></i>
     </div>
     <div class="cart1__wrapper__content">
     {%- if cart.item_count > 0 -%}

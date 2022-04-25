@@ -1,5 +1,4 @@
 .cart1 {
-    width: 0;
     transition: all .7s cubic-bezier(0.165, 0.85, 0.45, 1);
     -moz-transition: all .7s cubic-bezier(0.165, 0.85, 0.45, 1);
     -webkit-transition: all .7s cubic-bezier(0.165, 0.85, 0.45, 1);
@@ -8,7 +7,6 @@
 
 .cart1__overlay {
     position: fixed;
-    width: 0;
     top: 0;
     left: 0;
     bottom: 0;
@@ -27,7 +25,6 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
