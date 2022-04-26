@@ -2,6 +2,7 @@
 
 <div class="cart1"
     x-data="{
+              showCart: false,
               updateCart() {
                 // Send fetch request
                 fetch(window.Shopify.routes.root + '?view=cart')
@@ -13,6 +14,7 @@
               }
             }"
     @cart-updated.window="updateCart"
+    @toggle-cart.window="showCart = !showCart"
     x-show="showCart"
     x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
     x-transition:enter-start="-translate-x-full opacity-0" 
@@ -20,8 +22,24 @@
     x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
     x-transition:leave-start="translate-x-0" 
     x-transition:leave-end="-translate-x-full opacity-0">
-  <div class="cart1__overlay"></div>
-  <div class="cart1__wrapper" x-ref="cart_content" >
+  <div class="cart1__overlay" 
+        x-show="showCart"
+        x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
+        x-transition:enter-start="-translate-x-full opacity-0" 
+        x-transition:enter-end="translate-x-0 opacity-100" 
+        x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
+        x-transition:leave-start="translate-x-0" 
+        x-transition:leave-end="-translate-x-full opacity-0">
+  </div>
+  <div class="cart1__wrapper" 
+        x-ref="cart_content" 
+        x-show="showCart"
+        x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700" 
+        x-transition:enter-start="-translate-x-full opacity-0" 
+        x-transition:enter-end="translate-x-0 opacity-100" 
+        x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700" 
+        x-transition:leave-start="translate-x-0" 
+        x-transition:leave-end="-translate-x-full opacity-0">
     <form method="post" action="{{ routes.cart_url }}">
       <div class="cart1__wrapper__header" x-data>
           <h6>{{ 'sections.cart.title' | t }}</h6><i @click="$dispatch('toggle-cart')" class="fa fa-times-circle" aria-hidden="true"></i>

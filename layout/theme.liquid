@@ -255,10 +255,7 @@
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
   </head>
 
-  <body class="{% if settings.fixed_nav == true %}fixed-nav {% endif %}{% if settings.transparent_nav == true %}transparent-nav{% endif %}{% if template.name == 'index' and settings.transparent_nav == true %} index--transparent{% endif %}" style="background-color: var(--body-bgd)" x-data="{ 
-    showCart: false
-  }"
-  @toggle-cart.window="showCart = !showCart">
+  <body class="{% if settings.fixed_nav == true %}fixed-nav {% endif %}{% if settings.transparent_nav == true %}transparent-nav{% endif %}{% if template.name == 'index' and settings.transparent_nav == true %} index--transparent{% endif %}" style="background-color: var(--body-bgd)" x-data>
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
